@@ -1,6 +1,6 @@
 from rest_framework import generics
-from .models import Course, Enrollment
-from .serializers import CourseSerializer, EnrollmentSerializer
+from .models import Course, Enrollment, Student
+from .serializers import CourseSerializer, EnrollmentSerializer, StudentSerializer
 
 # List all courses OR create a new course
 class CourseListCreateView(generics.ListCreateAPIView):
@@ -11,3 +11,8 @@ class CourseListCreateView(generics.ListCreateAPIView):
 class EnrollmentListCreateView(generics.ListCreateAPIView):
     queryset = Enrollment.objects.all()
     serializer_class = EnrollmentSerializer
+
+# List all students OR create a new student
+class StudentListCreateView(generics.ListCreateAPIView):
+    queryset = Student.objects.all()
+    serializer_class = StudentSerializer
