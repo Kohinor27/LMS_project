@@ -16,3 +16,20 @@ class EnrollmentListCreateView(generics.ListCreateAPIView):
 class StudentListCreateView(generics.ListCreateAPIView):
     queryset = Student.objects.all()
     serializer_class = StudentSerializer
+
+# Create a student
+
+# View, update, or delete ONE course
+class CourseDetailView(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Course.objects.all()
+    serializer_class = CourseSerializer
+
+# View, update, or delete ONE enrollment
+class EnrollmentDetailView(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Enrollment.objects.all()
+    serializer_class = EnrollmentSerializer
+
+# View, update, or delets ONE student
+class StudentDetailView(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Student.objects.all()
+    serializer_class = StudentSerializer
