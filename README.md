@@ -105,5 +105,15 @@ Built as part of my full-stack development journey using:
 
 ---
 
+## Wireframes
 
+### **Frontend**
+![Frontend Wireframes](Miro%20wireframes/LMS%20Wireframe%20-%20Frame%201.jpg)
+*Student List, Add Student, Enrollment List, Add Enrollment, and Course List.*
+
+---
+
+### **Backend**
+![Backend Wireframes](Backend%20Wireframes/LMS%20Wireframe-%20Backend%20-%20Frame201.jpg)
+*Student, Enrollment, and Course data models.*
 
