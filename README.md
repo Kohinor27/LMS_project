@@ -6,8 +6,13 @@ A full-stack LMS that manages **Students**, **Courses**, and **Enrollments**, bu
 
 ## 🚀 Demo
 
-> **Live Demo (coming soon)**  
-> Screenshots will be added after UI is completed.
+## Running the project locally
+
+Backend:
+-py manage.py runserver
+Frontend:
+-cd lms-frontend
+-npm start
 
 **Current pages include:**
 - ✔ Student List  
