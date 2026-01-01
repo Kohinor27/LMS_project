@@ -7,7 +7,7 @@ A full-stack LMS that manages **Students**, **Courses**, and **Enrollments**, bu
 ## 🚀 Demo
 
 Frontend: https://courageous-boba-5a6e4a.netlify.app
-Backend API: https://lms-project-5ecb.onrender.com
+Backend API: https://lms-project-5ecb.onrender.com/admin/
 
 Backend:
 -py manage.py runserver
