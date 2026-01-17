@@ -7,21 +7,27 @@ from django.contrib.auth import authenticate
 from rest_framework.authtoken.models import Token
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.permissions import AllowAny
+from .permissions import IsTeacher, IsStudent, ReadOnly
+from rest_framework.permissions import IsAuthenticated
+
 
 # List all courses OR create a new course
 class CourseListCreateView(generics.ListCreateAPIView):
     queryset = Course.objects.all()
     serializer_class = CourseSerializer
+    permission_classes = [IsAuthenticated & (IsTeacher | ReadOnly)]
 
 # List all enrollments OR create a new enrollment
 class EnrollmentListCreateView(generics.ListCreateAPIView):
     queryset = Enrollment.objects.all()
     serializer_class = EnrollmentSerializer
+    permission_classes = [IsAuthenticated & (IsTeacher | ReadOnly)]
 
 # List all students OR create a new student
 class StudentListCreateView(generics.ListCreateAPIView):
     queryset = Student.objects.all()
     serializer_class = StudentSerializer
+    permission_classes = [IsAuthenticated & IsTeacher]
 
 # Create a student
 
@@ -29,16 +35,19 @@ class StudentListCreateView(generics.ListCreateAPIView):
 class CourseDetailView(generics.RetrieveUpdateDestroyAPIView):
     queryset = Course.objects.all()
     serializer_class = CourseSerializer
+    permission_classes = [IsAuthenticated & (IsTeacher | ReadOnly)]
 
 # View, update, or delete ONE enrollment
 class EnrollmentDetailView(generics.RetrieveUpdateDestroyAPIView):
     queryset = Enrollment.objects.all()
     serializer_class = EnrollmentSerializer
+    permission_classes = [IsAuthenticated & (IsTeacher | ReadOnly)]
 
 # View, update, or delets ONE student
 class StudentDetailView(generics.RetrieveUpdateDestroyAPIView):
     queryset = Student.objects.all()
     serializer_class = StudentSerializer
+    permission_classes = [IsAuthenticated & IsTeacher]
 
 @api_view(['POST'])
 @permission_classes([AllowAny])
