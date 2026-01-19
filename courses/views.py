@@ -15,7 +15,7 @@ from rest_framework.permissions import IsAuthenticated
 class CourseListCreateView(generics.ListCreateAPIView):
     queryset = Course.objects.all()
     serializer_class = CourseSerializer
-    permission_classes = [IsAuthenticated & (IsTeacher | ReadOnly)]
+    permission_classes = [IsAuthenticated]
 
 # List all enrollments OR create a new enrollment
 class EnrollmentListCreateView(generics.ListCreateAPIView):
