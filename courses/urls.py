@@ -1,7 +1,6 @@
 from django.urls import path
 from .views import (
     CourseListCreateView,
-    EnrollmentDetailView,
     EnrollmentListCreateView,
     StudentListCreateView,
     CourseDetailView,
@@ -16,7 +15,6 @@ urlpatterns = [
 
     #Enrollments
     path('enrollments/', EnrollmentListCreateView.as_view(), name='enrollment-list'),
-    path('enrollments/<int:pk>/', EnrollmentDetailView.as_view(), name='enrollment-detail'),
 
     # Students
     path('students/', StudentListCreateView.as_view(), name='student-list'),
