@@ -12,16 +12,21 @@ from rest_framework.permissions import IsAuthenticated
 
 
 # List all courses OR create a new course
-class CourseListCreateView(generics.ListCreateAPIView):
-    queryset = Course.objects.all()
-    serializer_class = CourseSerializer
-    permission_classes = [IsAuthenticated & (IsTeacher | IsAdmin | ReadOnly)]
-
-# List all enrollments OR create a new enrollment
 class EnrollmentListCreateView(generics.ListCreateAPIView):
-    queryset = Enrollment.objects.all()
     serializer_class = EnrollmentSerializer
-    permission_classes = [IsAuthenticated & (IsTeacher | IsAdmin |ReadOnly)]
+    permission_classes = [IsAuthenticated]
+
+    def get_queryset(self):
+        user = self.request.user
+
+        # Admins & teachers see all enrollments
+        if user.groups.filter(name__in=["admin", "Teacher"]).exists():
+            return Enrollment.objects.all()
+
+        # Students only see their own enrollments
+        return Enrollment.objects.filter(student=user)
+
+
 
 # List all students OR create a new student
 class StudentListCreateView(generics.ListCreateAPIView):
